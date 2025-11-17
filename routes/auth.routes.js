@@ -1,15 +1,15 @@
 // routes/auth.routes.js (Modificado)
 
-const express = require('express');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const express = import('express');
+const bcrypt = import('bcrypt');
+const jwt = import('jsonwebtoken');
 const router = express.Router();
 
 // NOVO: Importa o modelo User
-const User = require('../models/user'); 
+const User = import('../models/user'); 
 
 // ⚠️ REMOVIDO: const users = {}; 
-const JWT_SECRET = 'sua_chave_secreta_super_forte'; 
+const JWT_SECRET = 'lmw5nVyc1e09DqATLBZ5ewroVnkPxnBY3164XUjVopT'; 
 
 // --- Rota de Registro (/api/auth/register) ---
 router.post('/register', async (req, res) => {
@@ -71,7 +71,7 @@ router.post('/login', async (req, res) => {
 
         // 3. Gerar o Token JWT (DBEI: Token)
         const payload = { 
-            id: user.id, // Usamos o ID do BD
+            id: user.id,
             role: user.role, 
             type: 'access' 
         };

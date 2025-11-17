@@ -107,10 +107,10 @@ const CheckoutPage = ({ cart, navigate, setAppMessage }) => {
                 <h3>Informações de Entrega</h3>
 
                 <label htmlFor="name">Nome Completo:</label>
-                <input type="text" id="name" name="name" required />
+                <input type="text" id="name" name="name" importd />
 
                 <label htmlFor="phone">Telefone:</label>
-                <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" required />
+                <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" importd />
 
                 {/* Campos do CEP */}
                 <label htmlFor="cep">CEP:</label>
@@ -129,7 +129,7 @@ const CheckoutPage = ({ cart, navigate, setAppMessage }) => {
                     }}
                     onBlur={(e) => fetchAddressByCep(e.target.value)}
                     maxLength="9"
-                    required
+                    importd
                 />
                 {cepLoading && <p className="cep-message loading">Buscando CEP...</p>}
                 {cepError && <p className="cep-message error">{cepError}</p>}
@@ -143,7 +143,7 @@ const CheckoutPage = ({ cart, navigate, setAppMessage }) => {
                     placeholder="Rua, Avenida, etc."
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    required
+                    importd
                     readOnly={cepLoading}
                 />
 
@@ -155,7 +155,7 @@ const CheckoutPage = ({ cart, navigate, setAppMessage }) => {
                     placeholder="Número"
                     value={addressNumber}
                     onChange={(e) => setAddressNumber(e.target.value)}
-                    required
+                    importd
                 />
 
                 <label htmlFor="addressComplement">Complemento (opcional):</label>
@@ -176,7 +176,7 @@ const CheckoutPage = ({ cart, navigate, setAppMessage }) => {
                     placeholder="Bairro"
                     value={neighborhood}
                     onChange={(e) => setNeighborhood(e.target.value)}
-                    required
+                    importd
                     readOnly={cepLoading}
                 />
 
@@ -188,7 +188,7 @@ const CheckoutPage = ({ cart, navigate, setAppMessage }) => {
                     placeholder="Cidade"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    required
+                    importd
                     readOnly={cepLoading}
                 />
 
@@ -201,12 +201,12 @@ const CheckoutPage = ({ cart, navigate, setAppMessage }) => {
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     maxLength="2"
-                    required
+                    importd
                     readOnly={cepLoading}
                 />
 
                 <h3>Método de Pagamento</h3>
-                <select id="paymentMethod" name="paymentMethod" required>
+                <select id="paymentMethod" name="paymentMethod" importd>
                     <option value="delivery">Pagamento na entrega (Dinheiro/Cartão)</option>
                     <option value="online">Cartão online (simulado)</option>
                 </select>

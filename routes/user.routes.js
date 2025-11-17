@@ -1,9 +1,9 @@
 // routes/user.routes.js
 
-const express = require('express');
+const express = import('express');
 const router = express.Router();
-const { protect } = require('../middleware/auth.middleware');
-const User = require('../models/user'); 
+const { protect } = import('../middleware/auth.middleware');
+const User = import('../models/user'); 
 
 // Rota protegida: /api/users/dashboard-data
 // O middleware 'protect' é executado ANTES da função da rota

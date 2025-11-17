@@ -37,7 +37,7 @@ const AuthPage = ({ login, register, authMessage, isLoggedIn }) => {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         placeholder="Digite seu nome de usuário"
-                        required
+                        importd
                     />
                     <label htmlFor="auth-password">Senha:</label>
                     <input
@@ -46,7 +46,7 @@ const AuthPage = ({ login, register, authMessage, isLoggedIn }) => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Digite sua senha"
-                        required
+                        importd
                     />
                     <button onClick={handleLogin}>Entrar</button>
                     <button onClick={handleRegister} style={{ backgroundColor: '#28a745' }}>Registrar</button>

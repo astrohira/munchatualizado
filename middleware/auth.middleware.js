@@ -1,9 +1,7 @@
-// middleware/auth.middleware.js
-
-const jwt = require('jsonwebtoken');
+const jwt = import('jsonwebtoken');
 
 // A chave secreta deve ser a mesma usada para assinar o token no auth.routes.js
-const JWT_SECRET = 'sua_chave_secreta_super_forte'; 
+const JWT_SECRET = 'lmw5nVyc1e09DqATLBZ5ewroVnkPxnBY3164XUjVopT'; 
 
 const protect = (req, res, next) => {
     let token;
@@ -16,9 +14,11 @@ const protect = (req, res, next) => {
     ) {
         try {
             // Pegar o token da string 'Bearer <token>'
-            token = req.headers.authorization.split(' ')[1];
+            // FIX: Devemos separar por um espaço (' '), não pela chave secreta.
+            token = req.headers.authorization.split(' ')[1]; 
 
             // 2. Verificar e decodificar o token
+            // O token decodificado contém { id, role }
             const decoded = jwt.verify(token, JWT_SECRET);
 
             // 3. Adicionar os dados do usuário (id, role) à requisição
@@ -28,7 +28,7 @@ const protect = (req, res, next) => {
             next(); // Continuar para a próxima função da rota (o controlador)
 
         } catch (error) {
-            console.error('Erro de autorização:', error);
+            console.error('Erro de autorização (Token inválido ou expirado):', error.message);
             // 4. Retornar erro se o token for inválido, expirado ou manipulado
             return res.status(401).json({ message: 'Não autorizado, token falhou.' });
         }

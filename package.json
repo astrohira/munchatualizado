@@ -18,6 +18,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.15.3",
+    "pg": "^8.16.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "sequelize": "^6.37.7"
@@ -37,5 +38,13 @@
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astrohira/munchatualizado.git"
+  },
+  "bugs": {
+    "url": "https://github.com/astrohira/munchatualizado/issues"
+  },
+  "homepage": "https://github.com/astrohira/munchatualizado#readme"
 }

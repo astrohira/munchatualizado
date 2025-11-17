@@ -1,6 +1,6 @@
 // models/User.js
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db'); // Importa a instância de conexão
+const { DataTypes } = import('sequelize');
+const { sequelize } = import('../config/db'); // Importa a instância de conexão
 
 const User = sequelize.define('User', {
     // Definindo as colunas da tabela 'users' (BDI)

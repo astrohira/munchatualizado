@@ -2,10 +2,12 @@
 const express = import('express');
 const cors = import('cors');
 const bodyParser = import('body-parser');
+// Importa a função de conexão do BD
+const { connectDB } = import('./config/db'); 
 
 const app = express();
 const PORT = process.env.PORT || 3000; // Define a porta, padrão 3000
-const API_BASE_URL = 'http://localhost:5173';
+const API_BASE_URL = 'http://localhost:5173'; // Altere para o URL do seu frontend
 
 // 2. Middlewares
 // Permite que o Front-End (em outra porta) se comunique com o Back-End
@@ -34,8 +36,17 @@ app.use('/api/auth', authRoutes);
 const userRoutes = import('./routes/user.routes');
 app.use('/api/users', userRoutes); // Configura o prefixo /api/users para as novas rotas
 
-// 4. Inicialização do Servidor
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-    console.log(`Para acessar: http://localhost:${PORT}`);
-});
+
+// 4. Inicialização do Servidor (Após a conexão com o BD)
+const startServer = async () => {
+    // 4.1. Conecta e sincroniza os modelos com o banco de dados
+    await connectDB(); 
+
+    // 4.2. Inicia o servidor Express
+    app.listen(PORT, () => {
+        console.log(`Servidor rodando na porta ${PORT}`);
+        console.log(`Para acessar: http://localhost:${PORT}`);
+    });
+};
+
+startServer();
